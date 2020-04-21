@@ -2,11 +2,8 @@
 
 The Rust Tide stack provides a consistent way of developing [tide](https://github.com/http-rs/tide) http servers.
 
-<<<<<<< HEAD
 This stack is based on the `Rust 1.42` runtime.
 =======
-This stack is based on the `Rust nightly` runtime.
->>>>>>> 701d3b36d91c44214c393ca22655e069b3e92c7d
 
 ## Templates
 
