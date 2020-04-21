@@ -2,14 +2,13 @@ FROM rust:1.42-buster as builder
 
 WORKDIR "/project/user-app"
 
-# copy dependency files 
-COPY /user-app/Cargo.toml Cargo.toml
+COPY * /project/user-app/
 
 # get user application dependencies
 RUN cargo fetch 
 
 #copy user code
-COPY /user-app/src ./src
+COPY user-app/src /project/user-app/
 
 # build for release
 RUN cargo build --release \

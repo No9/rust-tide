@@ -9,4 +9,4 @@ edition = "2018"
 [dependencies]
 tide = { version = "0.7" }
 async-std = { version = "1" }
-application = { package = "rust-tide-default", path = "/project/userapp"}
+application = { package = "rust-tide-default", path = "/project/user-app"}
