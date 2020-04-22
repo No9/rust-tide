@@ -49,7 +49,7 @@ You can connect `lldb` in remote debug mode to this container as follows:
 lldb \
   -o "platform select remote-linux" \
   -o "platform connect connect://localhost:1234" \
-  -o "platform settings -w /project/userapp/target/debug" \
+  -o "platform settings -w /project/server/bin/target/debug" \
   -o "file rust-tide-server" 
 ```
 

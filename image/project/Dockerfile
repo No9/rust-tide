@@ -1,4 +1,8 @@
+FROM dev.local/appsody/rust-tide as server
+
 FROM rust:1.42-buster as builder
+
+COPY --from=server /project/server /project/server
 
 WORKDIR "/project/user-app"
 
@@ -10,6 +14,8 @@ RUN cargo fetch
 #copy user code
 COPY user-app/src /project/user-app/
 
+WORKDIR "/project/server/bin"
+
 # build for release
 RUN cargo build --release \
  && echo "#!/bin/bash" > run.sh \
@@ -17,14 +23,14 @@ RUN cargo build --release \
  && echo ./${bin##*/} >> run.sh \
  && chmod 755 run.sh
 
-FROM rust:1.42-slim-buster
+FROM debian:buster-slim
 
 RUN useradd rust
 
 WORKDIR "/project/user-app"
 
 # get files and built binary from previous image
-COPY --from=builder /project/user-app/run.sh /project/user-app/Cargo.toml /project/user-app/target/release/ ./
+COPY --from=builder /project/server/bin/run.sh /project/server/bin/Cargo.toml /project/server/bin/target/release/ ./
 
 USER rust
 
