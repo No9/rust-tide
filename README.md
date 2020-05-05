@@ -10,12 +10,19 @@ Templates are used to create your local project and start your development. When
 
 ## Getting Started
 
+1. Clone this repo and configure appsody
+   ```bash
+   git clone https://github.com/No9/rust-tide
+   cd rust-tide
+   appsody stack package
+   ```
+
 1. Create a new folder in your local directory and initialize it using the Appsody CLI, e.g.:
 
     ```bash
     mkdir my-project
     cd my-project
-    appsody init rust-tide
+    appsody init dev.local/rust-tide
     ```
     This will initialize a Tide project using the default template.
 
@@ -27,11 +34,26 @@ Templates are used to create your local project and start your development. When
 
     This launches a Docker container that continuously re-builds and re-runs your project. It also exposes port 8000 to allow you to call your service from your browser and test tooling.
 
-    You can continue to edit the application in your preferred IDE (VSCode or other) and your changes will be reflected in the running container within a few seconds.
-
 1. You should see a message printed on the console:
 
     ```Running `server/bin/target/debug/rust-tide-server```
+
+1. Open a browser at http://localhost:8000/hello 
+     
+     It should return `Hello, world`.
+
+1. Now open lib.rs and change `world` to `tide` and save the file.
+
+    ```rust
+    pub fn app() -> tide::server::Server<()> {    
+        let mut api = tide::new();
+        api.at("/hello").get(|_| async move { "Hello, Tide" });
+        api
+    }
+    ```
+
+1. Your application will be rebuild and republished so refresh http://localhost:8000/hello it will now say `Hello, Tide`
+
 
 ## Debugging
 
