@@ -2,6 +2,8 @@
 
 The Rust Tide stack provides a consistent way of developing [tide](https://github.com/http-rs/tide) http servers.
 
+Designed to be used with [Appsody](https://appsody.dev/) an [open source](https://github.com/appsody/) development and operations accelerator for containers.
+
 This stack is based on the `Rust 1.42` runtime.
 
 ## Templates
