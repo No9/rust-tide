@@ -1,6 +1,6 @@
 FROM dev.local/appsody/rust-tide as server
 
-FROM rust:1.42-buster as builder
+FROM rust:1.43.1-buster as builder
 
 COPY --from=server /project/server /project/server
 
