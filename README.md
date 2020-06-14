@@ -1,4 +1,6 @@
 # Rust Tide Stack
+# This has now been merged into the main appsody repository
+https://github.com/appsody/stacks/tree/master/experimental/rust-tide 
 
 The Rust Tide stack provides a consistent way of developing [tide](https://github.com/http-rs/tide) http servers.
 
